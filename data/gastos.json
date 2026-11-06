@@ -1,0 +1,10 @@
+[
+    {
+        "descripcion": "Almuerzo",
+        "monto": 18.5
+    },
+    {
+        "descripcion": "Transporte",
+        "monto": 3.5
+    }
+]
