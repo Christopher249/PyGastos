@@ -1,6 +1,10 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
+.venv/
+venv/
+.env
+data/gastos.json
 *$py.class
 
 # C extensions
@@ -218,3 +222,4 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
