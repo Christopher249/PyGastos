@@ -71,6 +71,34 @@ def mostrar_gastos(gastos):
     print(f"\nTotal gastado: S/ {total:.2f}")
 
 
+def eliminar_gasto(gastos):
+    # "not gastos" es True si la lista está vacía
+    if not gastos:
+        print("No hay gastos para eliminar")
+        return
+
+    mostrar_gastos(gastos) # reusando de función ya existente
+
+    try:
+        # int() convierte el texto a número entero; falla si escriben abc
+        numero = int(input("Número del gasto a eliminar: "))
+    except ValueError:
+        print("Ingresa un número válido.")
+        return
+
+    # len(gastos) es la cantidad de elementos de la lista
+    if numero < 1 or numero > len(gastos):
+        print("Ese número no existe en la lista.")
+        return
+
+    # Las listas empiezan en 0, pero el usuario ve la lista desde 1.
+    # Por eso restamos 1. pop() quita el elemnto y lo devuelve.
+    eliminado = gastos.pop(numero - 1)
+
+    guardar_gastos(gastos)  # guardamos la lista ya sin ese gasto
+    print(f"Se eliminó: {eliminado['descripcion']}")
+
+
 def main():
     gastos = cargar_gastos()
 
@@ -78,7 +106,8 @@ def main():
         print("\n=== PyGastos ===")
         print("1. Registrar gasto")
         print("2. Mostrar gastos")
-        print("3. Salir")
+        print("3. Eliminar gasto")
+        print("4. Salir")
 
         opcion = input("Selecciona una opción: ").strip()
 
@@ -87,6 +116,8 @@ def main():
         elif opcion == "2":
             mostrar_gastos(gastos)
         elif opcion == "3":
+            eliminar_gasto(gastos)    
+        elif opcion == "4":
             print("¡Gracias por usar PyGastos!")
             break
         else:
